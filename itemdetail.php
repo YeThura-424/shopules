@@ -6,17 +6,17 @@ $id = $_GET['id'];
 
 $sql = "SELECT * FROM items WHERE id=:id";
 $stmt = $conn->prepare($sql);
-$stmt->bindParam(':id',$id);
+$stmt->bindParam(':id', $id);
 $stmt->execute();
 
 $item = $stmt->fetch(PDO::FETCH_ASSOC);
 
-$name=$item['name'];
-$codeno=$item['codeno'];
-$price=$item['discount'];
-$photo=$item['photo'];
-$brand=$item['brand_id'];
-$subcategory=$item['subcategory_id'];
+$name = $item['name'];
+$codeno = $item['codeno'];
+$price = $item['discount'];
+$photo = $item['photo'];
+$brand = $item['brand_id'];
+$subcategory = $item['subcategory_id'];
 
 ?>
 
@@ -33,36 +33,36 @@ $subcategory=$item['subcategory_id'];
     </div>
     <div>
         <div class="card mb-3 container-fluid h-100">
-            <h5 class="pt-4"><?="YT_".$codeno ?></h5>
-            <p class="text-muted"><?=$name ?></p>
+            <h5 class="pt-4"><?= "YT_" . $codeno ?></h5>
+            <p class="text-muted"><?= $name ?></p>
             <div class="row no-gutters">
                 <div class="col-md-4">
-                    <img src="<?=$photo?>" class="card-img" height="350px;">    
+                    <img src="<?= $photo ?>" class="card-img" height="350px;">
                 </div>
                 <div class="col-md-8">
-                    
+
                     <div class="card-body">
-                        <?php 
+                        <?php
 
-                        $sql="SELECT * FROM brands WHERE id=:id";
-                        $stmt=$conn->prepare($sql);
-                        $stmt->bindParam(':id',$brand);
+                        $sql = "SELECT * FROM brands WHERE id=:id";
+                        $stmt = $conn->prepare($sql);
+                        $stmt->bindParam(':id', $brand);
                         $stmt->execute();
-                        $brands=$stmt->fetch(PDO::FETCH_ASSOC);
-                         ?>
-                        <p>Brand :<?=$brands['name']?></p>
-                        <?php 
+                        $brands = $stmt->fetch(PDO::FETCH_ASSOC);
+                        ?>
+                        <p>Brand :<?= $brands['name'] ?></p>
+                        <?php
 
-                        $sql="SELECT * FROM subcategories WHERE id=:id";
-                        $stmt=$conn->prepare($sql);
-                        $stmt->bindParam(':id',$subcategory);
+                        $sql = "SELECT * FROM subcategories WHERE id=:id";
+                        $stmt = $conn->prepare($sql);
+                        $stmt->bindParam(':id', $subcategory);
                         $stmt->execute();
-                        $subcategories=$stmt->fetch(PDO::FETCH_ASSOC);
-                         ?>
-                        <p>Subcategory :<?=$subcategories['name'] ?> </p>
-                        
-                        <p>Price : <span class="text-danger"><?=$price."MMK"?></span></p>
-                       
+                        $subcategories = $stmt->fetch(PDO::FETCH_ASSOC);
+                        ?>
+                        <p>Subcategory :<?= $subcategories['name'] ?> </p>
+
+                        <p>Price : <span class="text-danger"><?= $price . "MMK" ?></span></p>
+
                     </div>
                 </div>
             </div>
@@ -76,7 +76,7 @@ $subcategory=$item['subcategory_id'];
 
 
 
-<?php 
+<?php
 
 include("BackEnd_Footer.php");
 
