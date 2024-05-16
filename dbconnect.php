@@ -1,18 +1,14 @@
-<?php 
-$_Host="localhost";
-$_DbName="zdykpszw_shopules";
-$_User="zdykpszw_yethura";
-$_Password="yethura154980";
+<?php
+$_Host = "localhost";
+$_DbName = "shopules";
+$_User = "root";
+$_Password = "";
 
-try{
-	$conn = new PDO("mysql:host=$_Host;dbname=$_DbName",$_User,$_Password);
-	$conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+try {
+	$conn = new PDO("mysql:host=$_Host;dbname=$_DbName", $_User, $_Password);
+	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 	// echo "successfully connected";
-}catch (PDOException $e){
+} catch (PDOException $e) {
 	echo $e->getmessage();
 }
-
-
-
- ?>
